@@ -28,11 +28,11 @@ Organisation attribute is optional. If not specified default one will be used.
 
 |property|description|required|default value|
 |--------|-----------|--------|-------------|
-|izpack.input|the XML installation file. The installation can be specified as an external file, or embedded using a config child element.|false|/home/neoverflow/projects/easyant/community-plugins/izpack-easyant-plugin/src/main/izpack/install.xml|
-|izpack.basedir|the base directory to resolve the relative paths|false|/home/neoverflow/projects/easyant/community-plugins/izpack-easyant-plugin/src/main/izpack|
+|izpack.input|the XML installation file. The installation can be specified as an external file, or embedded using a config child element.|false|${basedir}/src/main/izpack/install.xml|
+|izpack.basedir|the base directory to resolve the relative paths|false|${basedir}/src/main/izpack|
 |target.artifacts|destination directory for target artifacts|false|${target}/artifacts|
 |izpack.installer.type|optional. standard or web. If web, the 'webdir' attribute must be specified in the input file. Used to force creation of a standard installer when the 'webdir' attribute has been used.|false|standard|
-|izpack.homedir|the IzPack home directory|false|/home/neoverflow/.izpack|
+|izpack.homedir|the IzPack home directory|false|${user.home}/.izpack|
 |izpack.output|the output jar installer file|false|${target.artifacts}/${ivy.module}-install.jar|
 
 ## Ivy Configurations
