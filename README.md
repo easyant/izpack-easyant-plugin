@@ -46,6 +46,7 @@ Organisation attribute is optional. If not specified default one will be used.
 ## Dependencies Overview
 
 |Organisation|Module|Revision|
+|------------|------|--------|
 |org.codehaus.izpack|izpack-ant|5.0.0-beta11|
 |org.codehaus.izpack|izpack-compiler|5.0.0-beta11|
 |org.codehaus.izpack|izpack-uninstaller|5.0.0-beta11|
