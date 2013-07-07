@@ -24,7 +24,7 @@
         <taskdef name="izpack" classpathref="org.apache.easyant.plugins#izpack.classpath" 
         	classname="com.izforge.izpack.ant.IzPackTask" />
         <ea:parameter property="target.artifacts" default="${target}/artifacts" description="destination directory for target artifacts" />
-		<ea:parameter property="izpack.input" default="${basedir}/src/main/izpack/install.xml" description="the XML installation file. The installation can be specified as an external file, or embedded using a config child element."/>
+		<ea:parameter property="izpack.input" default="${basedir}/src/main/izpack/install.xml" description="the XML installation file"/>
     	<ea:parameter property="izpack.output" default="${target.artifacts}/${ivy.module}-install.jar" description="the output jar installer file"/>
     	<ea:parameter property="izpack.installer.type" default="standard" description="optional. standard or web. If web, the 'webdir' attribute must be specified in the input file. Used to force creation of a standard installer when the 'webdir' attribute has been used."/>
     	<ea:parameter property="izpack.basedir" default="${basedir}/src/main/izpack" description="the base directory to resolve the relative paths"/>
@@ -32,7 +32,7 @@
     </target>
 
 	
-	<target name="izpack:install" depends="izpack:init">
+	<target name="izpack:install" depends="izpack:init" description="generates izpack bundle">
 		<mkdir dir="${target.artifacts}"/>
 	       <izpack input="${izpack.input}"
 	                output="${izpack.output}"

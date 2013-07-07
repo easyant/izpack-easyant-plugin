@@ -3,7 +3,7 @@
 # Description
 
 This module provides izpack integration feature.
-	
+    
 # Example
 
 ```xml
@@ -20,7 +20,7 @@ Organisation attribute is optional. If not specified default one will be used.
 |target name|description|extension point|depends|
 |-----------|-----------|---------------|-------|
 |izpack:init||||
-|izpack:install|||izpack:init|
+|izpack:install|generates izpack bundle||izpack:init|
 
 ## Module parameters
 
@@ -28,7 +28,7 @@ Organisation attribute is optional. If not specified default one will be used.
 
 |property|description|required|default value|
 |--------|-----------|--------|-------------|
-|izpack.input|the XML installation file. The installation can be specified as an external file, or embedded using a config child element.|false|${basedir}/src/main/izpack/install.xml|
+|izpack.input|the XML installation file|false|${basedir}/src/main/izpack/install.xml|
 |izpack.basedir|the base directory to resolve the relative paths|false|${basedir}/src/main/izpack|
 |target.artifacts|destination directory for target artifacts|false|${target}/artifacts|
 |izpack.installer.type|optional. standard or web. If web, the 'webdir' attribute must be specified in the input file. Used to force creation of a standard installer when the 'webdir' attribute has been used.|false|standard|
@@ -51,4 +51,3 @@ Organisation attribute is optional. If not specified default one will be used.
 |org.codehaus.izpack|izpack-compiler|5.0.0-beta11|
 |org.codehaus.izpack|izpack-uninstaller|5.0.0-beta11|
 |org.codehaus.izpack|izpack-installer|5.0.0-beta11|
-
