@@ -1,0 +1,53 @@
+<!--
+   Licensed to the Apache Software Foundation (ASF) under one or more
+   contributor license agreements.  See the NOTICE file distributed with
+   this work for additional information regarding copyright ownership.
+   The ASF licenses this file to You under the Apache License, Version 2.0
+   (the "License"); you may not use this file except in compliance with
+   the License.  You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+-->
+<project name="org.apache.easyant.plugins;izpack-test" 
+    xmlns:au="antlib:org.apache.ant.antunit"
+    xmlns:ivy="antlib:org.apache.ivy.ant"
+    xmlns:ea="antlib:org.apache.easyant">
+    
+    <!-- Import your plugin -->
+    <property name="target" value="${basedir}/target/test-antunit"/>
+    <!-- configure easyant in current project -->
+    <ea:configure-easyant-ivy-instance />
+    <!-- import our local plugin -->
+    <ea:import-test-module moduleIvy="../../../module.ivy" sourceDirectory="../../main/resources"/>
+ 
+    <!-- Defines a setUp / tearDown (before each test) that cleans the environnement --> 
+    <target name="clean" description="remove stale build artifacts before / after each test">
+        <delete dir="${basedir}" includeemptydirs="true">
+            <include name="**/target/**"/>
+            <include name="**/lib/**"/>
+        </delete>
+    </target>
+    
+    <target name="setUp" depends="clean"/>
+    <target name="tearDown" depends="clean"/>
+    
+    <target name="test-izpack:init" depends="izpack:init">
+        <au:assertPropertyEquals name="target.artifacts" value="${target}/artifacts"/>
+    	<au:assertPropertyEquals name="izpack.input" value="${basedir}/src/main/izpack/install.xml"/>
+    	<au:assertPropertyEquals name="izpack.output" value="${target.artifacts}/${ivy.module}-install.jar"/>
+    	<au:assertPropertyEquals name="izpack.installer.type" value="standard"/>
+    	<au:assertPropertyEquals name="izpack.basedir" value="${basedir}/src/main/izpack"/>
+    	<au:assertPropertyEquals name="izpack.homedir" value="${user.home}/.izpack"/>
+    </target>
+
+    <target name="test-izpack:install" depends="izpack:install">
+    	<au:assertFileExists file="${izpack.output}"/>
+    </target>
+	
+</project>
