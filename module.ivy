@@ -8,6 +8,7 @@
 <ivy-module version="2.0" xmlns:ea="http://www.easyant.org">
     <info organisation="org.apache.easyant.plugins" module="izpack" status="integration"
         revision="0.1">
+        <description>This module provides izpack integration feature.</description>
         <ea:build organisation="org.apache.easyant.buildtypes" module="build-std-ant-plugin"
             revision="0.9" />
     </info>
